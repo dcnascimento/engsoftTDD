@@ -30,13 +30,13 @@ public class DiferencaDiagonal {
             throw new IllegalArgumentException("Matrix maximum size exceed. Limit is 1000");
         }
 
-        for (int i = 0; i < matriz.length; i++) {
-            if(matriz[i].length != matriz.length){
+        for (int[] ints : matriz) {
+            if (ints.length != matriz.length) {
                 throw new IllegalArgumentException("Matrix must be diagonalizable");
             }
 
-            Arrays.stream(matriz[i]).max().ifPresent(this::verificaLimites);
-            Arrays.stream(matriz[i]).min().ifPresent(this::verificaLimites);
+            Arrays.stream(ints).max().ifPresent(this::verificaLimites);
+            Arrays.stream(ints).min().ifPresent(this::verificaLimites);
 
         }
     }
@@ -59,10 +59,6 @@ public class DiferencaDiagonal {
         if(num > 100 || num < -100){
             throw new IllegalArgumentException("Values must be between -100 and 100");
         }
-    }
-
-    public int[][] getMatriz() {
-        return matriz;
     }
 
     public void setMatriz(int[][] matriz) {
