@@ -29,7 +29,11 @@ public class DiferencaDiagonalTest {
     @DisplayName("Deve retornar a diferença diagonal quando a matriz não estiver vazia")
     void mustReturnTheResultWhenMatrixIsNotEmpty(){
         //given
-        diferencaDiagonal.setMatriz(new int[][]{{1,2,3},{4,5,6},{9,8,9}});
+        diferencaDiagonal.setMatriz(new int[][]{
+                {1, 2 ,3},
+                {4, 5, 6},
+                {9, 8, 9}
+        });
 
         //when
         int result = diferencaDiagonal.calculaDiferencaDiagonal();
@@ -78,6 +82,24 @@ public class DiferencaDiagonalTest {
 
         //then
         assertEquals("Matrix maximum size exceed. Limit is 1000", thrown.getMessage());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando a matriz não for diagonalizável")
+    void mustThrowExceptionWhenMatrixIsNotDiagonalizable(){
+        //given
+        diferencaDiagonal.setMatriz(new int[][]{
+                {1, 2, 3, 4},
+                {4, 5, 6, 7},
+                {6, 7, 8, 9},
+        });
+
+        //when
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+                () -> diferencaDiagonal.calculaDiferencaDiagonal());
+
+        //then
+        assertEquals("Matrix must be diagonalizable", thrown.getMessage());
     }
 
 }

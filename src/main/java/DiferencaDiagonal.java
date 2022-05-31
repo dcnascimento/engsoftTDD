@@ -14,20 +14,8 @@ public class DiferencaDiagonal {
     }
 
     public int calculaDiferencaDiagonal() {
-
         verificaMatriz();
-
-        for (int i = 0; i < this.matriz.length; i++)
-        {
-            for (int j = 0; j < this.matriz.length; j++)
-            {
-                if (i == j)
-                    this.diagonalEsquerda += matriz[i][j];
-
-                if (i == matriz.length - j - 1)
-                    this.diagonalDireita += matriz[i][j];
-            }
-        }
+        calculaDiagonais();
         return Math.abs(getDiagonalEsquerda() - getDiagonalDireita());
     }
 
@@ -38,6 +26,26 @@ public class DiferencaDiagonal {
 
         if(matriz.length > 1000){
             throw new IllegalArgumentException("Matrix maximum size exceed. Limit is 1000");
+        }
+
+        for (int i = 0; i < matriz.length; i++) {
+            if(matriz[i].length != matriz.length){
+                throw new IllegalArgumentException("Matrix must be diagonalizable");
+            }
+        }
+    }
+
+    private void calculaDiagonais() {
+        for (int i = 0; i < this.matriz.length; i++)
+        {
+            for (int j = 0; j < this.matriz.length; j++)
+            {
+                if (i == j)
+                    this.diagonalEsquerda += matriz[i][j];
+
+                if (i == matriz.length - j - 1)
+                    this.diagonalDireita += matriz[i][j];
+            }
         }
     }
 
