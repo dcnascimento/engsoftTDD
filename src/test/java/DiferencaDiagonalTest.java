@@ -29,7 +29,7 @@ public class DiferencaDiagonalTest {
     @DisplayName("Deve retornar a diferença diagonal quando a matriz não estiver vazia")
     void mustReturnTheResultWhenMatrixIsNotEmpty(){
         //given
-        diferencaDiagonal.setMatrix(new int[][]{{1,2,3},{4,5,6},{9,8,9}});
+        diferencaDiagonal.setMatriz(new int[][]{{1,2,3},{4,5,6},{9,8,9}});
 
         //when
         int result = diferencaDiagonal.calculaDiferencaDiagonal();
@@ -43,7 +43,7 @@ public class DiferencaDiagonalTest {
     @DisplayName("Deve lançar exceção quando a matriz estiver vazia")
     void mustThrowExceptionWhenMatrixIsEmpty(){
         //given
-        diferencaDiagonal.setMatrix(new int[][]{});
+        diferencaDiagonal.setMatriz(new int[][]{});
 
         //when
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
@@ -70,7 +70,7 @@ public class DiferencaDiagonalTest {
     @DisplayName("Deve lançar exceção quando a matriz possuir mais de 1000 colunas")
     void mustThrowExceptionWhenMatrixHasMoreThanThousandColumns(){
         //given
-        diferencaDiagonal.setMatrix(new int[1001][]);
+        diferencaDiagonal.setMatriz(new int[1001][]);
 
         //when
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,

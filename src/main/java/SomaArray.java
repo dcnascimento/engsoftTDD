@@ -20,15 +20,16 @@ public class SomaArray {
     }
 
     public int sum(){
-        if( this.array == null ){
-            throw new ArithmeticException("Array is null");
-        }
-        if( this.array.length == 0 ){
-            throw new ArithmeticException("Array is empty");
+        verificaArray();
+        return Arrays.stream(array).sum();
+    }
+
+    private void verificaArray() {
+        if( this.array == null || this.array.length == 0){
+            throw new IllegalArgumentException("Array cannot be null or empty");
         }
         if( this.array.length > 1000){
-            throw new ArithmeticException("Array lenght is bigger than 1000");
+            throw new IllegalArgumentException("Array maximum size exceed. Limit is 1000");
         }
-        return Arrays.stream(array).sum();
     }
 }

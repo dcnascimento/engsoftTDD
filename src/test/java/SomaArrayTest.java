@@ -32,36 +32,36 @@ public class SomaArrayTest {
         somaArray.setArray(new int[]{1,2,3});
 
         //when
-        somaArray.sum();
+        int result = somaArray.sum();
 
         //then
-        assertEquals(9, 9);
+        assertEquals(6, result);
 
     }
 
     @Test
     @DisplayName("Deve recusar a soma quando array estiver vazio")
-    void mustReturnZeroWhenArrayIsEmpty(){
+    void mustNotSumWhenArrayIsEmpty(){
         //given
         somaArray.setArray(new int[]{});
 
         //when
-        ArithmeticException thrown = assertThrows(ArithmeticException.class, () -> somaArray.sum());
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> somaArray.sum());
 
         //then
-        assertEquals("Array is empty", thrown.getMessage());
+        assertEquals("Array cannot be null or empty", thrown.getMessage());
     }
 
     @Test
     @DisplayName("Deve recusar a soma o array for nulo")
-    void mustReturnZeroWhenArrayIsNull(){
+    void mustNotSumWhenArrayIsNull(){
         //given
 
         //when
-        ArithmeticException thrown = assertThrows(ArithmeticException.class, () -> somaArray.sum());
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> somaArray.sum());
 
         //then
-        assertEquals("Array is null", thrown.getMessage());
+        assertEquals("Array cannot be null or empty", thrown.getMessage());
     }
 
     @Test
@@ -71,9 +71,9 @@ public class SomaArrayTest {
         somaArray.setArray(new int[1001]);
 
         //when
-        ArithmeticException thrown = assertThrows(ArithmeticException.class, () -> somaArray.sum());
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> somaArray.sum());
 
         //then
-        assertEquals("Array lenght is bigger than 1000", thrown.getMessage());
+        assertEquals("Array maximum size exceed. Limit is 1000", thrown.getMessage());
     }
 }
