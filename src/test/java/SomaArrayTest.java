@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,7 +5,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Daniel Nascimento & Jefferson Cordeiro
@@ -53,7 +53,7 @@ public class SomaArrayTest {
     }
 
     @Test
-    @DisplayName("Deve recusar a soma o array for nulo")
+    @DisplayName("Deve recusar a soma quando o array for nulo")
     void mustNotSumWhenArrayIsNull(){
         //given
 

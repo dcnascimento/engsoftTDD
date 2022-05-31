@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
@@ -35,7 +35,7 @@ public class DiferencaDiagonalTest {
         int result = diferencaDiagonal.calculaDiferencaDiagonal();
 
         //then
-        Assertions.assertEquals(2, result);
+        assertEquals(2, result);
 
     }
 
@@ -50,7 +50,7 @@ public class DiferencaDiagonalTest {
                 () -> diferencaDiagonal.calculaDiferencaDiagonal());
 
         //then
-        Assertions.assertEquals("Matrix cannot be null or empty", thrown.getMessage());
+        assertEquals("Matrix cannot be null or empty", thrown.getMessage());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class DiferencaDiagonalTest {
                 () -> diferencaDiagonal.calculaDiferencaDiagonal());
 
         //then
-        Assertions.assertEquals("Matrix cannot be null or empty", thrown.getMessage());
+        assertEquals("Matrix cannot be null or empty", thrown.getMessage());
     }
 
     @Test
@@ -77,7 +77,7 @@ public class DiferencaDiagonalTest {
                 () -> diferencaDiagonal.calculaDiferencaDiagonal());
 
         //then
-        Assertions.assertEquals("Matrix maximum size exceed. Limit is 1000", thrown.getMessage());
+        assertEquals("Matrix maximum size exceed. Limit is 1000", thrown.getMessage());
     }
 
 }
