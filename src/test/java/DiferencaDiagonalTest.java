@@ -102,4 +102,40 @@ public class DiferencaDiagonalTest {
         assertEquals("Matrix must be diagonalizable", thrown.getMessage());
     }
 
+    @Test
+    @DisplayName("Deve lançar exceção quando a matriz possuir elemento com valor acima de 100")
+    void mustThrowExceptionWhenMatrixElementHasValueAboveHundred(){
+        //given
+        diferencaDiagonal.setMatriz(new int[][]{
+                {10, 20, 30},
+                {400, 50, 6},
+                {7, 82, 90},
+        });
+
+        //when
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+                () -> diferencaDiagonal.calculaDiferencaDiagonal());
+
+        //then
+        assertEquals("Values must be between -100 and 100", thrown.getMessage());
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando a matriz possuir elemento com valor abaixo de -100")
+    void mustThrowExceptionWhenMatrixElementHasValueBelowMinusHundred(){
+        //given
+        diferencaDiagonal.setMatriz(new int[][]{
+                {-101, 20, 30},
+                {40, 50, 6},
+                {7, 82, 90},
+        });
+
+        //when
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+                () -> diferencaDiagonal.calculaDiferencaDiagonal());
+
+        //then
+        assertEquals("Values must be between -100 and 100", thrown.getMessage());
+    }
+
 }

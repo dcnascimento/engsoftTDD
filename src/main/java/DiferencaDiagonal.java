@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @author Daniel Nascimento & Jefferson Cordeiro
  * @since 30/05/2022
@@ -32,6 +34,10 @@ public class DiferencaDiagonal {
             if(matriz[i].length != matriz.length){
                 throw new IllegalArgumentException("Matrix must be diagonalizable");
             }
+
+            Arrays.stream(matriz[i]).max().ifPresent(this::verificaLimites);
+            Arrays.stream(matriz[i]).min().ifPresent(this::verificaLimites);
+
         }
     }
 
@@ -46,6 +52,12 @@ public class DiferencaDiagonal {
                 if (i == matriz.length - j - 1)
                     this.diagonalDireita += matriz[i][j];
             }
+        }
+    }
+
+    private void verificaLimites(int num){
+        if(num > 100 || num < -100){
+            throw new IllegalArgumentException("Values must be between -100 and 100");
         }
     }
 
